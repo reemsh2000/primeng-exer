@@ -1,2 +1,15 @@
 <app-navbar></app-navbar>
-<app-user-details></app-user-details>
+<div class="main">
+  <app-user-details></app-user-details>
+  <p-tabView>
+    <p-tabPanel header="General">
+      <app-general></app-general>
+    </p-tabPanel>
+    <p-tabPanel header="Contract">
+      Contract
+    </p-tabPanel>
+    <p-tabPanel header="Camp Info">
+      Camp Info
+    </p-tabPanel>
+  </p-tabView>
+</div>
