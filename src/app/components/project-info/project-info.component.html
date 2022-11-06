@@ -1,0 +1,76 @@
+<div class="basic">
+  <div class="basic_cont">
+    <h5>Project Info</h5>
+    <button
+      pButton
+      pRipple
+      type="button"
+      icon="pi pi-pencil"
+      class="p-button-rounded p-button-secondary"
+      (click)="switchEditing()"
+    ></button>
+  </div>
+  <div class="container">
+    <div class="input_cont" [class.editing]="!editing">
+      Title
+      <p-autoComplete
+        *ngIf="editing"
+        [(ngModel)]="userInfo.title"
+        [suggestions]="filteredTitles$ | async"
+        (completeMethod)="filterTitles($event)"
+      ></p-autoComplete>
+      <span class="ml-2" *ngIf="!editing">{{ userInfo.title }}</span>
+    </div>
+    <div class="input_cont" [class.editing]="!editing">
+      Badge No
+      <input
+        type="text"
+        pInputText
+        [(ngModel)]="userInfo.badgeNo"
+        *ngIf="editing"
+      />
+      <span class="ml-2" *ngIf="!editing">{{ userInfo.badgeNo }}</span>
+    </div>
+    <div class="input_cont" [class.editing]="!editing">
+      Org Unit
+      <p-autoComplete
+        *ngIf="editing"
+        [(ngModel)]="userInfo.orgunit"
+        [suggestions]="filteredOrgunits$ | async"
+        (completeMethod)="filterOrgunits($event)"
+      ></p-autoComplete>
+      <span class="ml-2" *ngIf="!editing">{{ userInfo.orgunit }}</span>
+    </div>
+  </div>
+  <div class="container">
+    <div class="input_cont" [class.editing]="!editing">
+      Calendar
+      <p-autoComplete
+        *ngIf="editing"
+        [(ngModel)]="userInfo.calendar"
+        [suggestions]="filteredCalendars$ | async"
+        (completeMethod)="filterCalendars($event)"
+      ></p-autoComplete>
+      <span class="ml-2" *ngIf="!editing">{{ userInfo.calendar }}</span>
+    </div>
+    <div class="input_cont" [class.editing]="!editing">
+      Contract Type
+      <p-dropdown
+        *ngIf="editing"
+        [options]="contractTypes"
+        [(ngModel)]="userInfo.contractType"
+      ></p-dropdown>
+
+      <span class="ml-2" *ngIf="!editing">{{ userInfo.contractType }}</span>
+    </div>
+    <div class="input_cont" [class.editing]="!editing">
+      Direct Status
+      <p-dropdown
+        *ngIf="editing"
+        [options]="directStatus"
+        [(ngModel)]="userInfo.direct"
+      ></p-dropdown>
+      <span class="ml-2" *ngIf="!editing">{{ userInfo.direct }}</span>
+    </div>
+  </div>
+</div>
