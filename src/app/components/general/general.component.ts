@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { CountryService } from 'src/app/services/countries';
 
 @Component({
   selector: 'app-general',
   templateUrl: './general.component.html',
-  styleUrls: ['./general.component.scss']
+  styleUrls: ['./general.component.scss'],
+  providers: [CountryService],
 })
-export class GeneralComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
+export class GeneralComponent {
+  @Output() nextTab = new EventEmitter();
+  next() {
+    this.nextTab.emit(1);
   }
-
 }
