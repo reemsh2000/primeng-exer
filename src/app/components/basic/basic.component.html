@@ -1,0 +1,77 @@
+<div class="basic">
+  <div class="basic_cont">
+    <h5>Basic</h5>
+    <button
+      pButton
+      pRipple
+      type="button"
+      icon="pi pi-pencil"
+      class="p-button-rounded p-button-secondary"
+      (click)="switchEditing()"
+    ></button>
+  </div>
+  <div class="container">
+    <div class="input_cont" [class.editing]="!editing">
+      First Name
+      <input
+        type="text"
+        pInputText
+        [(ngModel)]="userInfo.firstName"
+        *ngIf="editing"
+      />
+      <span class="ml-2" *ngIf="!editing">{{ userInfo.firstName }}</span>
+    </div>
+    <div class="input_cont" [class.editing]="!editing">
+      Last Name
+      <input
+        type="text"
+        pInputText
+        [(ngModel)]="userInfo.lastName"
+        *ngIf="editing"
+      />
+      <span class="ml-2" *ngIf="!editing">{{ userInfo.lastName }}</span>
+    </div>
+    <div class="input_cont" [class.editing]="!editing">
+      GroupNo
+      <input
+        type="text"
+        pInputText
+        [(ngModel)]="userInfo.groupNo"
+        *ngIf="editing"
+      />
+      <span class="ml-2" *ngIf="!editing">{{ userInfo.groupNo }}</span>
+    </div>
+  </div>
+  <div class="container">
+    <div class="input_cont" [class.editing]="!editing">
+      Email
+      <input
+        type="text"
+        pInputText
+        [(ngModel)]="userInfo.email"
+        *ngIf="editing"
+      />
+      <span class="ml-2" *ngIf="!editing">{{ userInfo.email }}</span>
+    </div>
+    <div class="input_cont" [class.editing]="!editing">
+      Date of Birth
+      <p-calendar
+        [(ngModel)]="userInfo.dob"
+        *ngIf="editing"
+      ></p-calendar>
+
+      <span class="ml-2" *ngIf="!editing">{{ userInfo.dob | date}}</span>
+    </div>
+    <div class="input_cont" [class.editing]="!editing">
+      nationality
+      <p-autoComplete
+        *ngIf="editing"
+        [(ngModel)]="userInfo.nationality"
+        [suggestions]="filteredCountries"
+        field="name"
+        (completeMethod)="filterCountry($event)"
+      ></p-autoComplete>
+      <span class="ml-2" *ngIf="!editing">{{ userInfo.nationality.name }}</span>
+    </div>
+  </div>
+</div>

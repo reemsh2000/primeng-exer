@@ -1,0 +1,38 @@
+.basic {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  margin: 10px 0;
+  box-shadow: var(--shadow);
+  .basic_cont {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    .input_cont {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      margin: 10px 0;
+      height: 75px;
+    }
+    .editing {
+      height: 50px;
+      width: 250px;
+      span {
+        border-bottom: 1.5px solid rgb(205, 205, 205);
+      }
+    }
+  }
+  @media (max-width:990px) {
+      .basic  {
+      flex-wrap: wrap;
+    }
+  }
+}
+
