@@ -22,6 +22,7 @@ import { UserDetailsComponent } from './components/user-details/user-details.com
     FormsModule,
     TabViewModule,
     ButtonModule,
+    TabViewModule
   ],
   providers: [],
   bootstrap: [AppComponent],
