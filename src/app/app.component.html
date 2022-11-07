@@ -1,15 +1,11 @@
 <app-navbar></app-navbar>
 <div class="main">
   <app-user-details></app-user-details>
-  <p-tabView [activeIndex]="index">
-    <p-tabPanel header="General" >
+  <p-tabView [activeIndex]="index" (onChange)="handleChange($event)">
+    <p-tabPanel header="General">
       <app-general (nextTab)="changeTab($event)"></app-general>
     </p-tabPanel>
-    <p-tabPanel header="Contract">
-      Contract
-    </p-tabPanel>
-    <p-tabPanel header="Camp Info">
-      Camp Info
-    </p-tabPanel>
+    <p-tabPanel header="Contract"> Contract </p-tabPanel>
+    <p-tabPanel header="Camp Info"> Camp Info </p-tabPanel>
   </p-tabView>
 </div>

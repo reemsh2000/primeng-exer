@@ -8,9 +8,10 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'prime';
   index: number = 0;
-  changeTab(indexTab:number) {
-    console.log("clicked")
-    console.log(indexTab)
+  changeTab(indexTab: number) {
     this.index = indexTab;
+  }
+  handleChange(e: any) {
+    this.index = e.index;
   }
 }
