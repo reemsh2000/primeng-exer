@@ -24,7 +24,7 @@ export class ProjectInfoComponent {
   public filteredOrgunits$ = this.filteredOrgunits.asObservable();
   private filteredCalendars = new BehaviorSubject<any>(calendars);
   public filteredCalendars$ = this.filteredCalendars.asObservable();
-  
+
   constructor() {}
 
   filter(query: string, arr: string[], filteredItem: BehaviorSubject<any>) {
