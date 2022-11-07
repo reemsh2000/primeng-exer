@@ -1,21 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { CountryService } from 'src/app/services/countries';
-
+import { titles, orgunits, calendars } from '../../../assets/data';
 @Component({
   selector: 'app-project-info',
   templateUrl: './project-info.component.html',
   styleUrls: ['./project-info.component.scss'],
 })
-export class ProjectInfoComponent implements OnInit {
+export class ProjectInfoComponent {
   editing: boolean = false;
-  private filteredTitles = new BehaviorSubject<any>([]);
-  public filteredTitles$ = this.filteredTitles.asObservable();
-  private filteredOrgunits = new BehaviorSubject<any>([]);
-  public filteredOrgunits$ = this.filteredOrgunits.asObservable();
-  private filteredCalendars = new BehaviorSubject<any>([]);
-  public filteredCalendars$ = this.filteredCalendars.asObservable();
-
   directStatus = ['direct', 'indirect'];
   contractTypes = ['Monthly', 'Daily', 'Lumpump'];
   userInfo: any = {
@@ -26,42 +18,29 @@ export class ProjectInfoComponent implements OnInit {
     contractType: 'Monthly',
     direct: 'Indirect',
   };
-  titles = [
-    'Project Engineer - Civil',
-    'Project Engineer - E/M',
-    'Software Engineer',
-  ];
-  orgunits = ['M01031', 'M01032', 'M01032', 'M01033'];
-  calendars = ['FCW 8 Plus 1', 'FCW 8 Plus 2', 'FCW 9', 'FCW 10'];
-  constructor(public countryService: CountryService) {}
+  private filteredTitles = new BehaviorSubject<any>(titles);
+  public filteredTitles$ = this.filteredTitles.asObservable();
+  private filteredOrgunits = new BehaviorSubject<any>(orgunits);
+  public filteredOrgunits$ = this.filteredOrgunits.asObservable();
+  private filteredCalendars = new BehaviorSubject<any>(calendars);
+  public filteredCalendars$ = this.filteredCalendars.asObservable();
+  
+  constructor() {}
 
-  async ngOnInit() {}
+  filter(query: string, arr: string[], filteredItem: BehaviorSubject<any>) {
+    let filtered = arr.filter((title: any) =>
+      title.toLowerCase().startsWith(query.toLowerCase())
+    );
+    filteredItem.next(filtered);
+  }
+  filterTitles = (event: any) =>
+    this.filter(event.query, titles, this.filteredTitles);
 
-  filterTitles(event: any) {
-    let query = event.query;
-    console.log('befo', this.titles, query);
-    let titles = this.titles.filter((title: any) =>
-      title.toLowerCase().startsWith(query.query)
-    );
-    console.log(this.titles);
-    this.filteredTitles.next(titles);
-  }
-  filterOrgunits(event: any) {
-    let query = event.query.toLowerCase();
-    let orgunits = this.orgunits.filter((title: any) =>
-      title.toLowerCase().startsWith(query.query)
-    );
-    this.filteredOrgunits.next(orgunits);
-  }
-  filterCalendars(event: any) {
-    let query = event.query.toLowerCase();
-    let calendars = this.calendars.filter((title: any) =>
-      title.toLowerCase().startsWith(query.query)
-    );
-    this.filteredCalendars.next(calendars);
-  }
-  switchEditing() {
-    this.editing = !this.editing;
-    console.log(this.userInfo);
-  }
+  filterOrgunits = (event: any) =>
+    this.filter(event.query, orgunits, this.filteredOrgunits);
+
+  filterCalendars = (event: any) =>
+    this.filter(event.query, calendars, this.filteredCalendars);
+
+  switchEditing = () => (this.editing = !this.editing);
 }
