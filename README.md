@@ -1,6 +1,6 @@
 # Prime
 small exersise using primeng 
-[link](https://6368deb69a810d0c0ee31150--effortless-pika-b4a8cf.netlify.app/)
+[link](https://main--effortless-pika-b4a8cf.netlify.app/)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.7.
 
