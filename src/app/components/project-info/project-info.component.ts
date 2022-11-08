@@ -18,29 +18,26 @@ export class ProjectInfoComponent {
     contractType: 'Monthly',
     direct: 'Indirect',
   };
-  private filteredTitles = new BehaviorSubject<any>(titles);
-  public filteredTitles$ = this.filteredTitles.asObservable();
-  private filteredOrgunits = new BehaviorSubject<any>(orgunits);
-  public filteredOrgunits$ = this.filteredOrgunits.asObservable();
-  private filteredCalendars = new BehaviorSubject<any>(calendars);
-  public filteredCalendars$ = this.filteredCalendars.asObservable();
+  private filtered = new BehaviorSubject<any>({
+    titles,
+    orgunits,
+    calendars,
+  });
+  public filtered$ = this.filtered.asObservable();
 
   constructor() {}
 
-  filter(query: string, arr: string[], filteredItem: BehaviorSubject<any>) {
+  filter(query: string, arr: string[]) {
     let filtered = arr.filter((title: any) =>
       title.toLowerCase().startsWith(query.toLowerCase())
     );
-    filteredItem.next(filtered);
+    this.filtered.next(filtered);
   }
-  filterTitles = (event: any) =>
-    this.filter(event.query, titles, this.filteredTitles);
+  filterTitles = (event: any) => this.filter(event.query, titles);
 
-  filterOrgunits = (event: any) =>
-    this.filter(event.query, orgunits, this.filteredOrgunits);
+  filterOrgunits = (event: any) => this.filter(event.query, orgunits);
 
-  filterCalendars = (event: any) =>
-    this.filter(event.query, calendars, this.filteredCalendars);
+  filterCalendars = (event: any) => this.filter(event.query, calendars);
 
   switchEditing = () => (this.editing = !this.editing);
 }
