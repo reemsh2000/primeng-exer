@@ -16,7 +16,7 @@
       <p-autoComplete
         *ngIf="editing"
         [(ngModel)]="userInfo.title"
-        [suggestions]="filtered$| async"
+        [suggestions]="filtered$ | async"
         (completeMethod)="filterTitles($event)"
       ></p-autoComplete>
       <span class="ml-2" *ngIf="!editing">{{ userInfo.title }}</span>
@@ -36,7 +36,7 @@
       <p-autoComplete
         *ngIf="editing"
         [(ngModel)]="userInfo.orgunit"
-        [suggestions]="filtered$| async "
+        [suggestions]="filtered$ | async"
         (completeMethod)="filterOrgunits($event)"
       ></p-autoComplete>
       <span class="ml-2" *ngIf="!editing">{{ userInfo.orgunit }}</span>
@@ -48,7 +48,7 @@
       <p-autoComplete
         *ngIf="editing"
         [(ngModel)]="userInfo.calendar"
-        [suggestions]="filtered$| async"
+        [suggestions]="filtered$ | async"
         (completeMethod)="filterCalendars($event)"
       ></p-autoComplete>
       <span class="ml-2" *ngIf="!editing">{{ userInfo.calendar }}</span>
